@@ -171,16 +171,16 @@ backend/
 
 ---
 
-## Step 6: FastAPI 入口
+## Step 6: FastAPI 入口 ✅ 已完成
 
-### 6.1 backend/main.py
-- [ ] 创建 FastAPI 应用实例
-- [ ] 配置 CORS（允许前端跨域）
-- [ ] 注册路由
+### 6.1 backend/main.py ✅
+- [x] 创建 FastAPI 应用实例
+- [x] 配置 CORS（允许前端跨域）
+- [x] 注册路由
   - include_router(connections.router, prefix="/api")
   - include_router(query.router, prefix="/api")
-- [ ] 启动时初始化数据库
-- [ ] 健康检查端点 `GET /health`
+- [x] 启动时初始化数据库（使用 lifespan）
+- [x] 健康检查端点 `GET /health`
 
 ---
 
