@@ -101,30 +101,32 @@ backend/
 
 ---
 
-## Step 4: 服务层实现
+## Step 4: 服务层实现 ✅ 已完成
 
-### 4.1 backend/services/sql_validator.py
-- [ ] `validate_select_only(sql: str) -> bool`
+### 4.1 backend/services/sql_validator.py ✅
+- [x] `validate_select_only(sql: str) -> tuple[bool, str]`
   - 验证 SQL 是否为只读 SELECT 语句
-  - 禁止 INSERT/UPDATE/DELETE/DROP/ALTER/TRUNCATE 等
+  - 禁止 INSERT/UPDATE/DELETE/DROP/ALTER/TRUNCATE/GRANT/REVOKE/EXEC 等
   - 禁止多语句执行（分号分隔）
+  - 支持 WITH (CTE) 语句
 
-### 4.2 backend/services/postgres.py
-- [ ] `test_connection(connection_string: str) -> bool`
+### 4.2 backend/services/postgres.py ✅
+- [x] `test_connection(connection_string: str) -> tuple[bool, str]`
   - 测试 PostgreSQL 连接是否有效
-- [ ] `get_schema(connection_string: str) -> List[TableSchema]`
+- [x] `get_schema(connection_string: str) -> list[TableSchema]`
   - 查询 information_schema 获取表结构
   - 返回所有表名、列名、数据类型
-- [ ] `execute_query(connection_string: str, sql: str, limit: int) -> ExecuteSqlResponse`
+- [x] `execute_query(connection_string: str, sql: str, limit: int) -> ExecuteSqlResponse`
   - 执行 SELECT 查询
   - 返回列名、数据行、行数
-  - 应用行数限制
+  - 应用行数限制（默认 MAX_QUERY_ROWS）
 
-### 4.3 backend/services/llm.py
-- [ ] `generate_sql(schema: List[TableSchema], natural_language: str) -> GenerateSqlResponse`
+### 4.3 backend/services/llm.py ✅
+- [x] `generate_sql(schema: list[TableSchema], natural_language: str) -> GenerateSqlResponse`
   - 构建 prompt（包含 schema 上下文）
-  - 调用 LLM API
-  - 解析响应，提取 SQL 和解释
+  - 调用 OpenAI API
+  - 解析 JSON 响应，提取 SQL 和解释
+  - 支持 markdown 代码块解析
   - Prompt 要点：
     - 只生成 SELECT 语句
     - 基于提供的 schema
