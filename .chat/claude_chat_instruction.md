@@ -5,5 +5,11 @@
 请按以上要求，梳理，分析并编写 开发需求 instruction,保存到 spec/instructions.md
 
 # day one spec
+
+## back-end
 读取 spec/instructions.md ，识别DayOne的back-end功能，帮我设计一份开发分步开发清单，要严格按照开发规格说明中的后端功能文件夹和文件名进行规划。
 保存到 spec/spec-back-end-day-one.dev.md
+
+## front-end
+读取 spec/instructions.md ，识别DayOne的front-end功能，帮我设计一份开发分步开发清单，要严格按照开发规格说明中的后端功能文件夹和文件名进行规划。
+保存到 spec/spec-front-end-day-one.dev.md
