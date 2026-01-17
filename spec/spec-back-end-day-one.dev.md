@@ -37,17 +37,18 @@ backend/
 
 ---
 
-## Step 2: 配置与数据库初始化
+## Step 2: 配置与数据库初始化 ✅ 已完成
 
-### 2.1 backend/config.py
-- [ ] 定义配置类/常量
-- [ ] LLM API Key 配置（从环境变量读取）
-- [ ] SQLite 数据库路径配置
-- [ ] 查询结果行数限制配置（默认 1000）
+### 2.1 backend/config.py ✅
+- [x] 定义配置类/常量
+- [x] LLM API Key 配置（从环境变量读取）
+- [x] SQLite 数据库路径配置
+- [x] 查询结果行数限制配置（默认 1000）
+- [x] CORS 配置
 
-### 2.2 backend/database.py
-- [ ] SQLite 数据库连接初始化
-- [ ] 创建 `connections` 表
+### 2.2 backend/database.py ✅
+- [x] SQLite 数据库连接初始化
+- [x] 创建 `connections` 表
   ```sql
   CREATE TABLE IF NOT EXISTS connections (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -56,40 +57,44 @@ backend/
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   );
   ```
-- [ ] 提供数据库会话获取函数
+- [x] 提供数据库会话获取函数 `get_db()`
+- [x] 添加 `.env.example` 环境变量模板
 
 ---
 
-## Step 3: Pydantic 数据模型
+## Step 3: Pydantic 数据模型 ✅ 已完成
 
-### 3.1 backend/models/schemas.py
-- [ ] `ConnectionCreate` - 创建连接请求体
+### 3.1 backend/models/schemas.py ✅
+- [x] `ConnectionCreate` - 创建连接请求体
   - name: str
   - connection_string: str
-- [ ] `ConnectionResponse` - 连接响应
+- [x] `ConnectionResponse` - 连接响应
   - id: int
   - name: str
   - connection_string: str
   - created_at: datetime
-- [ ] `GenerateSqlRequest` - 生成 SQL 请求体
+- [x] `ConnectionTestResponse` - 连接测试响应（新增）
+  - success: bool
+  - message: str
+- [x] `GenerateSqlRequest` - 生成 SQL 请求体
   - connection_id: int
   - natural_language_query: str
-- [ ] `GenerateSqlResponse` - 生成 SQL 响应
+- [x] `GenerateSqlResponse` - 生成 SQL 响应
   - sql: str
   - explanation: str
-- [ ] `ExecuteSqlRequest` - 执行 SQL 请求体
+- [x] `ExecuteSqlRequest` - 执行 SQL 请求体
   - connection_id: int
   - sql: str
-- [ ] `ExecuteSqlResponse` - 执行 SQL 响应
-  - columns: List[str]
-  - rows: List[List[Any]]
+- [x] `ExecuteSqlResponse` - 执行 SQL 响应
+  - columns: list[str]
+  - rows: list[list[Any]]
   - row_count: int
-- [ ] `SchemaResponse` - Schema 响应
-  - tables: List[TableSchema]
-- [ ] `TableSchema` - 表结构
+- [x] `SchemaResponse` - Schema 响应
+  - tables: list[TableSchema]
+- [x] `TableSchema` - 表结构
   - table_name: str
-  - columns: List[ColumnSchema]
-- [ ] `ColumnSchema` - 列结构
+  - columns: list[ColumnSchema]
+- [x] `ColumnSchema` - 列结构
   - column_name: str
   - data_type: str
   - is_nullable: bool
