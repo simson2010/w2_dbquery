@@ -134,35 +134,35 @@ backend/
 
 ---
 
-## Step 5: 路由层实现
+## Step 5: 路由层实现 ✅ 已完成
 
-### 5.1 backend/routers/connections.py
-- [ ] `POST /api/connections` - 添加新连接
+### 5.1 backend/routers/connections.py ✅
+- [x] `POST /api/connections` - 添加新连接
   - 接收 ConnectionCreate
   - 存入 SQLite
   - 返回 ConnectionResponse
-- [ ] `GET /api/connections` - 获取所有连接
+- [x] `GET /api/connections` - 获取所有连接
   - 查询 SQLite
-  - 返回 List[ConnectionResponse]
-- [ ] `DELETE /api/connections/{id}` - 删除连接
+  - 返回 list[ConnectionResponse]
+- [x] `DELETE /api/connections/{id}` - 删除连接
   - 从 SQLite 删除
   - 返回成功/失败
-- [ ] `POST /api/connections/{id}/test` - 测试连接
+- [x] `POST /api/connections/{id}/test` - 测试连接
   - 获取连接字符串
   - 调用 postgres.test_connection
-  - 返回测试结果
-- [ ] `GET /api/connections/{id}/schema` - 获取 Schema
+  - 返回 ConnectionTestResponse
+- [x] `GET /api/connections/{id}/schema` - 获取 Schema
   - 获取连接字符串
   - 调用 postgres.get_schema
   - 返回 SchemaResponse
 
-### 5.2 backend/routers/query.py
-- [ ] `POST /api/generate-sql` - 生成 SQL
+### 5.2 backend/routers/query.py ✅
+- [x] `POST /api/generate-sql` - 生成 SQL
   - 接收 GenerateSqlRequest
   - 获取连接的 schema
   - 调用 llm.generate_sql
   - 返回 GenerateSqlResponse
-- [ ] `POST /api/execute-sql` - 执行 SQL
+- [x] `POST /api/execute-sql` - 执行 SQL
   - 接收 ExecuteSqlRequest
   - 调用 sql_validator.validate_select_only
   - 验证失败返回 400 错误
