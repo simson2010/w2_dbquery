@@ -6,9 +6,9 @@
 
 ---
 
-## Step 1: 项目初始化
+## Step 1: 项目初始化 ✅ 已完成
 
-### 1.1 创建 React + TypeScript 项目
+### 1.1 创建 React + TypeScript 项目 ✅
 ```bash
 cd w2_dbquery
 npm create vite@latest frontend -- --template react-ts
@@ -16,57 +16,60 @@ cd frontend
 npm install
 ```
 
-### 1.2 安装依赖
+### 1.2 安装依赖 ✅
 ```bash
 npm install axios react-router-dom
 npm install -D tailwindcss postcss autoprefixer
 npm install -D @types/node
-npx tailwindcss init -p
 ```
 
-### 1.3 目录结构
+**实际安装的依赖版本：**
+| 包名 | 版本 | 类型 |
+|------|------|------|
+| react | ^19.2.0 | 运行时 |
+| react-dom | ^19.2.0 | 运行时 |
+| axios | ^1.13.2 | 运行时 |
+| react-router-dom | ^7.12.0 | 运行时 |
+| tailwindcss | ^4.1.18 | 开发 |
+| postcss | ^8.5.6 | 开发 |
+| autoprefixer | ^10.4.23 | 开发 |
+| @types/node | ^24.10.9 | 开发 |
+| typescript | ~5.9.3 | 开发 |
+| vite | ^7.2.4 | 开发 |
+
+> **注意：** Tailwind CSS v4 不再需要 `npx tailwindcss init -p` 命令，配置方式有所变化。
+
+### 1.3 目录结构 ✅
 ```
 frontend/
 ├── src/
 │   ├── components/
-│   │   ├── common/
-│   │   │   ├── Loading.tsx
-│   │   │   ├── Toast.tsx
-│   │   │   └── ErrorBoundary.tsx
-│   │   ├── ConnectionList.tsx
-│   │   ├── ConnectionForm.tsx
-│   │   ├── ConnectionSelector.tsx
-│   │   ├── QueryInput.tsx
-│   │   ├── SqlPreview.tsx
-│   │   ├── ResultTable.tsx
-│   │   └── SchemaViewer.tsx
+│   │   └── common/
 │   ├── pages/
-│   │   ├── Home.tsx
-│   │   └── Connections.tsx
 │   ├── services/
-│   │   └── api.ts
 │   ├── types/
-│   │   └── index.ts
+│   ├── assets/
 │   ├── App.tsx
+│   ├── App.css
 │   ├── main.tsx
 │   └── index.css
+├── public/
 ├── index.html
 ├── package.json
 ├── tsconfig.json
+├── tsconfig.app.json
 ├── tsconfig.node.json
-├── tailwind.config.js
-├── postcss.config.js
-├── vite.config.ts
-└── .env.example
+├── eslint.config.js
+└── vite.config.ts
 ```
 
 ---
 
-## Step 2: 配置文件
+## Step 2: 配置文件 ✅ 已完成
 
-### 2.1 vite.config.ts（API 代理配置）
-- [ ] 配置开发服务器代理
-- [ ] 将 `/api` 请求代理到后端 `http://localhost:8000`
+### 2.1 vite.config.ts（API 代理配置） ✅
+- [x] 配置开发服务器代理
+- [x] 将 `/api` 请求代理到后端 `http://localhost:8000`
 ```typescript
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -85,16 +88,16 @@ export default defineConfig({
 })
 ```
 
-### 2.2 环境变量配置
-- [ ] 创建 `.env.example` 文件
+### 2.2 环境变量配置 ✅
+- [x] 创建 `.env.example` 文件
 ```
 VITE_API_BASE_URL=http://localhost:8000
 ```
 - [ ] 创建 `.env` 文件（本地开发用，不提交到 git）
 
-### 2.3 tailwind.config.js
-- [ ] 配置 content 路径
-- [ ] 配置主题色（可选）
+### 2.3 tailwind.config.js ✅
+- [x] 配置 content 路径
+- [x] 配置主题色（可选）
 ```javascript
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -109,8 +112,8 @@ export default {
 }
 ```
 
-### 2.4 postcss.config.js
-- [ ] 确认 Tailwind 和 Autoprefixer 配置
+### 2.4 postcss.config.js ✅
+- [x] 确认 Tailwind 和 Autoprefixer 配置
 ```javascript
 export default {
   plugins: {
@@ -120,19 +123,29 @@ export default {
 }
 ```
 
-### 2.5 src/index.css
-- [ ] 添加 Tailwind 指令
+### 2.5 src/index.css ✅
+- [x] 添加 Tailwind 指令
 ```css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom base styles */
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
 ```
 
-### 2.6 index.html
-- [ ] 配置页面标题
-- [ ] 配置 favicon（可选）
+### 2.6 index.html ✅
+- [x] 配置页面标题
+- [x] 配置语言为 zh-CN
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />

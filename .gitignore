@@ -14,3 +14,7 @@ wheels/
 
 # SQLite database
 data/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
