@@ -357,27 +357,29 @@ export interface ToastMessage {
 
 ---
 
-## Step 7: 页面实现
+## Step 7: 页面实现 ✅ 已完成
 
-### 7.1 src/pages/Connections.tsx
+### 7.1 src/pages/Connections.tsx ✅
 **功能：** 数据库连接管理页面
 
-- [ ] 状态管理：
+- [x] 状态管理：
   - connections: Connection[]
   - loading: boolean
   - formLoading: boolean
-- [ ] 页面加载时获取连接列表
-- [ ] 集成 ConnectionList 组件
-- [ ] 集成 ConnectionForm 组件
-- [ ] 处理添加连接
-- [ ] 处理删除连接
-- [ ] 处理测试连接
-- [ ] 错误提示（使用 Toast）
+  - toasts: ToastMessage[]
+- [x] 页面加载时获取连接列表
+- [x] 集成 ConnectionList 组件
+- [x] 集成 ConnectionForm 组件
+- [x] 处理添加连接
+- [x] 处理删除连接（带确认对话框）
+- [x] 处理测试连接
+- [x] 错误提示（使用 Toast）
+- [x] 两栏布局（表单 + 列表）
 
-### 7.2 src/pages/Home.tsx
+### 7.2 src/pages/Home.tsx ✅
 **功能：** 查询主页面
 
-- [ ] 状态管理：
+- [x] 状态管理：
   - selectedConnectionId: number | null
   - connections: Connection[]
   - naturalLanguageQuery: string
@@ -386,19 +388,20 @@ export interface ToastMessage {
   - queryResult: ExecuteSqlResponse | null
   - schema: TableSchema[]
   - 各种 loading 状态
-- [ ] 页面布局：
+- [x] 页面布局：
   - 顶部：连接选择器 (ConnectionSelector)
-  - 左侧/上方：Schema 查看器（可选显示）
-  - 中间：查询输入 → SQL 预览 → 结果表格
-- [ ] 功能流程：
+  - 左侧：Schema 查看器（1/4 宽度）
+  - 右侧：查询输入 → SQL 预览 → 结果表格（3/4 宽度）
+- [x] 功能流程：
   1. 选择数据库连接
-  2. 加载 Schema
+  2. 自动加载 Schema
   3. 输入自然语言
   4. 点击生成 SQL
   5. 预览/编辑 SQL
   6. 点击执行
   7. 查看结果
-- [ ] 错误处理和提示（使用 Toast）
+- [x] 错误处理和提示（使用 Toast）
+- [x] 成功提示（显示返回记录数）
 
 ---
 
