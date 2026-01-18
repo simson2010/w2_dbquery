@@ -162,10 +162,10 @@ body {
 
 ---
 
-## Step 3: TypeScript 类型定义
+## Step 3: TypeScript 类型定义 ✅ 已完成
 
-### 3.1 src/types/index.ts
-- [ ] 定义所有 API 相关类型
+### 3.1 src/types/index.ts ✅
+- [x] 定义所有 API 相关类型
 ```typescript
 // 数据库连接
 export interface Connection {
@@ -220,7 +220,7 @@ export interface ExecuteSqlRequest {
 
 export interface ExecuteSqlResponse {
   columns: string[];
-  rows: any[][];
+  rows: unknown[][];
   row_count: number;
 }
 
@@ -231,6 +231,8 @@ export interface ToastMessage {
   message: string;
 }
 ```
+
+> **注意：** 使用 `unknown[][]` 替代 `any[][]` 以提高类型安全性。
 
 ---
 
