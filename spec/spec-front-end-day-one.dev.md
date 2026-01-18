@@ -405,39 +405,56 @@ export interface ToastMessage {
 
 ---
 
-## Step 8: 应用入口与路由
+## Step 8: 应用入口与路由 ✅ 已完成
 
-### 8.1 src/App.tsx
-- [ ] 配置 React Router
-- [ ] 路由定义：
+### 8.1 src/App.tsx ✅
+- [x] 配置 React Router (Routes, Route)
+- [x] 路由定义：
   - `/` - Home 页面
   - `/connections` - Connections 页面
-- [ ] 导航栏组件
-  - Logo/标题
+- [x] 导航栏组件
+  - Logo/标题（点击返回首页）
   - 导航链接：查询、连接管理
-- [ ] 页面布局容器
-- [ ] 包裹 ErrorBoundary
-- [ ] Toast 容器
+  - 当前页面高亮显示
+- [x] 页面布局容器（灰色背景）
+- [x] 包裹 ErrorBoundary
 
-### 8.2 src/main.tsx
-- [ ] 渲染 App 组件
-- [ ] 引入全局样式
-- [ ] 配置 BrowserRouter
+### 8.2 src/main.tsx ✅
+- [x] 渲染 App 组件
+- [x] 引入全局样式 (index.css)
+- [x] 配置 BrowserRouter
+- [x] StrictMode 包裹
+
+**清理：**
+- [x] 删除未使用的 App.css
 
 ---
 
-## Step 9: 样式与 UI 优化
+## Step 9: 样式与 UI 优化 ✅ 已完成
 
-### 9.1 通用样式
-- [ ] 按钮样式（primary, secondary, danger）
-- [ ] 输入框样式
-- [ ] 卡片容器样式
-- [ ] 表格样式
-- [ ] Loading 状态样式
+### 9.1 通用样式 ✅
+在 `src/index.css` 中使用 `@layer components` 定义了以下样式类：
 
-### 9.2 响应式布局
-- [ ] 移动端适配
-- [ ] 桌面端布局优化
+- [x] 按钮样式：`.btn`, `.btn-primary`, `.btn-secondary`, `.btn-danger`, `.btn-success`
+- [x] 输入框样式：`.input`, `.input-error`
+- [x] 卡片容器样式：`.card`, `.card-header`
+- [x] 表格样式：`.table` (含 th, td, 斑马纹)
+- [x] 标签样式：`.label`
+- [x] 空状态样式：`.empty-state`
+- [x] 等宽字体样式：`.mono`
+- [x] 工具类：`.scrollbar-hide`
+
+### 9.2 响应式布局 ✅
+- [x] 导航栏移动端适配
+  - 较小的内边距和字体
+  - 标题在小屏幕显示简短版本
+  - 导航栏固定在顶部 (sticky)
+- [x] Home 页面响应式布局
+  - 移动端单列布局
+  - 桌面端 1:3 比例布局（Schema : 查询区域）
+- [x] Connections 页面响应式布局
+  - 移动端单列布局
+  - 桌面端两栏布局
 
 ---
 

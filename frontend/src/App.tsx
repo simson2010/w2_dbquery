@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import ErrorBoundary from './components/common/ErrorBoundary';
+import Home from './pages/Home';
+import Connections from './pages/Connections';
 
-function App() {
-  const [count, setCount] = useState(0)
+function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
+  const location = useLocation();
+  const isActive = location.pathname === to;
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Link
+      to={to}
+      className={`px-3 py-2 text-sm sm:px-4 sm:text-base rounded-lg transition-colors ${
+        isActive
+          ? 'bg-blue-500 text-white'
+          : 'text-gray-600 hover:bg-gray-100'
+      }`}
+    >
+      {children}
+    </Link>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <div className="min-h-screen bg-gray-100">
+      {/* 导航栏 */}
+      <nav className="bg-white shadow-sm sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex items-center justify-between h-14 sm:h-16">
+            {/* Logo/标题 */}
+            <Link to="/" className="flex items-center gap-1 sm:gap-2">
+              <span className="text-lg sm:text-xl font-bold text-blue-600">SQL</span>
+              <span className="text-lg sm:text-xl font-semibold text-gray-800 hidden xs:inline">Query Assistant</span>
+              <span className="text-lg font-semibold text-gray-800 xs:hidden">助手</span>
+            </Link>
+
+            {/* 导航链接 */}
+            <div className="flex items-center gap-1 sm:gap-2">
+              <NavLink to="/">查询</NavLink>
+              <NavLink to="/connections">连接管理</NavLink>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* 页面内容 */}
+      <main className="py-4 sm:py-6 px-2 sm:px-4">
+        <ErrorBoundary>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/connections" element={<Connections />} />
+          </Routes>
+        </ErrorBoundary>
+      </main>
+    </div>
+  );
+}
+
+export default App;
