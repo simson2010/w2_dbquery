@@ -1,13 +1,32 @@
 import Loading from './common/Loading';
+import { exportToJson, exportToCsv } from '../utils/export';
 
 interface ResultTableProps {
   columns: string[];
   rows: unknown[][];
   rowCount: number;
   loading: boolean;
+  onExportSuccess?: (format: 'json' | 'csv') => void;
 }
 
-export default function ResultTable({ columns, rows, rowCount, loading }: ResultTableProps) {
+export default function ResultTable({
+  columns,
+  rows,
+  rowCount,
+  loading,
+  onExportSuccess
+}: ResultTableProps) {
+
+  const handleExportJson = () => {
+    exportToJson(columns, rows);
+    onExportSuccess?.('json');
+  };
+
+  const handleExportCsv = () => {
+    exportToCsv(columns, rows);
+    onExportSuccess?.('csv');
+  };
+
   if (loading) {
     return (
       <div className="flex justify-center py-8">
@@ -35,9 +54,28 @@ export default function ResultTable({ columns, rows, rowCount, loading }: Result
 
   return (
     <div className="space-y-2">
-      <div className="text-sm text-gray-600">
-        共 <span className="font-medium">{rowCount}</span> 条记录
+      {/* 记录数统计和导出按钮 */}
+      <div className="flex items-center justify-between">
+        <div className="text-sm text-gray-600">
+          共 <span className="font-medium">{rowCount}</span> 条记录
+        </div>
+        <div className="flex gap-2">
+          <button
+            onClick={handleExportJson}
+            className="px-3 py-1.5 text-sm bg-blue-50 text-blue-600 rounded hover:bg-blue-100 transition-colors"
+          >
+            导出 JSON
+          </button>
+          <button
+            onClick={handleExportCsv}
+            className="px-3 py-1.5 text-sm bg-green-50 text-green-600 rounded hover:bg-green-100 transition-colors"
+          >
+            导出 CSV
+          </button>
+        </div>
       </div>
+
+      {/* 数据表格 */}
       <div className="border border-gray-200 rounded-lg overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">

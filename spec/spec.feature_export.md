@@ -394,3 +394,50 @@ Step 4: 测试验证
 2. **导出进度**: 大数据量导出时显示进度条
 3. **更多格式**: 支持 Excel (.xlsx) 格式导出
 4. **自定义文件名**: 允许用户自定义导出文件名
+
+---
+
+## 开发进度记录
+
+### 2026-01-18 开发完成
+
+| 步骤 | 状态 | 完成时间 | 备注 |
+|------|------|----------|------|
+| Step 1: 创建 utils/export.ts | ✅ 完成 | 2026-01-18 | 实现 exportToJson, exportToCsv 函数 |
+| Step 2: 修改 ResultTable.tsx | ✅ 完成 | 2026-01-18 | 添加导出按钮和点击处理 |
+| Step 3: 修改 Home.tsx | ✅ 完成 | 2026-01-18 | 添加 handleExportSuccess 回调 |
+| Step 4: 构建验证 | ✅ 完成 | 2026-01-18 | TypeScript 编译通过，无错误 |
+
+### 变更文件列表
+
+```
+frontend/src/utils/export.ts        (新增) - 导出工具函数
+frontend/src/components/ResultTable.tsx (修改) - 添加导出按钮
+frontend/src/pages/Home.tsx         (修改) - 添加导出成功回调
+```
+
+### 功能实现说明
+
+1. **导出工具函数** (`utils/export.ts`)
+   - `exportToJson()`: 将查询结果转换为 JSON 对象数组并下载
+   - `exportToCsv()`: 将查询结果转换为 CSV 格式并下载（含 UTF-8 BOM）
+   - `escapeCsvValue()`: 处理 CSV 特殊字符转义
+   - `generateFileName()`: 生成带时间戳的文件名
+   - `downloadFile()`: 触发浏览器下载
+
+2. **ResultTable 组件更新**
+   - 新增 `onExportSuccess` 可选回调 prop
+   - 在有查询结果时显示「导出 JSON」和「导出 CSV」按钮
+   - 按钮样式：蓝色背景（JSON）、绿色背景（CSV）
+
+3. **Home 页面更新**
+   - 新增 `handleExportSuccess` 回调函数
+   - 导出成功后显示 Toast 提示
+
+### 待手动测试项
+
+- [ ] 启动应用，执行查询后测试导出 JSON
+- [ ] 启动应用，执行查询后测试导出 CSV
+- [ ] 验证导出文件在 Excel 中打开正常
+- [ ] 验证中文字符显示正常
+

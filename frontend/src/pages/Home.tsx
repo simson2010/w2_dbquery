@@ -128,6 +128,11 @@ export default function Home() {
     }
   };
 
+  // 导出成功回调
+  const handleExportSuccess = useCallback((format: 'json' | 'csv') => {
+    addToast('success', `已成功导出为 ${format.toUpperCase()} 格式`);
+  }, [addToast]);
+
   const isConnectionSelected = selectedConnectionId !== null;
 
   return (
@@ -185,6 +190,7 @@ export default function Home() {
               rows={queryResult?.rows ?? []}
               rowCount={queryResult?.row_count ?? 0}
               loading={executeLoading}
+              onExportSuccess={handleExportSuccess}
             />
           </div>
         </div>
