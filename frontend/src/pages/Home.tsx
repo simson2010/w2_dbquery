@@ -13,8 +13,7 @@ import {
 } from '../services/api';
 import ConnectionSelector from '../components/ConnectionSelector';
 import SchemaViewer from '../components/SchemaViewer';
-import QueryInput from '../components/QueryInput';
-import SqlPreview from '../components/SqlPreview';
+import QueryEditor from '../components/QueryEditor';
 import ResultTable from '../components/ResultTable';
 import Toast from '../components/common/Toast';
 
@@ -159,25 +158,18 @@ export default function Home() {
 
         {/* 右侧：查询区域 */}
         <div className="lg:col-span-3 space-y-6">
-          {/* 自然语言输入 */}
+          {/* 查询编辑器（Tab 切换） */}
           <div className="bg-white rounded-lg shadow p-4">
-            <QueryInput
-              value={naturalLanguageQuery}
-              onChange={setNaturalLanguageQuery}
-              onSubmit={handleGenerateSql}
-              loading={generateLoading}
-              disabled={!isConnectionSelected}
-            />
-          </div>
-
-          {/* SQL 预览 */}
-          <div className="bg-white rounded-lg shadow p-4">
-            <SqlPreview
+            <QueryEditor
+              naturalLanguageQuery={naturalLanguageQuery}
+              onNaturalLanguageChange={setNaturalLanguageQuery}
+              onGenerateSql={handleGenerateSql}
+              generateLoading={generateLoading}
               sql={generatedSql}
               explanation={explanation}
-              onChange={setGeneratedSql}
-              onExecute={handleExecuteSql}
-              loading={executeLoading}
+              onSqlChange={setGeneratedSql}
+              onExecuteSql={handleExecuteSql}
+              executeLoading={executeLoading}
               disabled={!isConnectionSelected}
             />
           </div>

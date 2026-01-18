@@ -454,3 +454,47 @@ Step 4: 清理旧组件（可选）
 2. **SQL 语法高亮**: 在 SQL 编辑器中添加语法高亮
 3. **历史记录**: 保存用户的查询历史
 4. **模板**: 提供常用 SQL 模板
+
+---
+
+## 开发进度记录
+
+### 2026-01-18 开发完成
+
+| 步骤 | 状态 | 完成时间 | 备注 |
+|------|------|----------|------|
+| Step 1: 创建 QueryEditor.tsx | ✅ 完成 | 2026-01-18 | 实现 Tab 切换、自然语言输入、SQL 编辑功能 |
+| Step 2: 修改 Home.tsx | ✅ 完成 | 2026-01-18 | 替换 QueryInput 和 SqlPreview 为 QueryEditor |
+| Step 3: 构建验证 | ✅ 完成 | 2026-01-18 | TypeScript 编译通过，无错误 |
+| Step 4: 清理旧组件 | ⏸️ 保留 | - | QueryInput.tsx 和 SqlPreview.tsx 保留作为备份 |
+
+### 变更文件列表
+
+```
+frontend/src/components/QueryEditor.tsx  (新增) - 带 Tab 切换的查询编辑器组件
+frontend/src/pages/Home.tsx              (修改) - 使用 QueryEditor 替换原有组件
+frontend/src/components/QueryInput.tsx   (保留) - 原组件保留作为备份
+frontend/src/components/SqlPreview.tsx   (保留) - 原组件保留作为备份
+```
+
+### 功能实现说明
+
+1. **QueryEditor 组件** (`components/QueryEditor.tsx`)
+   - Tab 切换状态管理 (`activeTab`: 'natural-language' | 'sql-editor')
+   - 自然语言输入面板：文本输入 + 生成 SQL 按钮
+   - SQL 编辑面板：AI 解释 + SQL 编辑器 + 执行按钮
+   - 自动切换逻辑：SQL 从空变为有值时自动切换到 SQL 编辑 Tab
+   - 快捷键支持：Ctrl+Enter 生成/执行
+
+2. **Home 页面更新**
+   - 移除 QueryInput 和 SqlPreview 导入
+   - 使用单个 QueryEditor 组件替代
+   - 布局从两个卡片合并为一个卡片
+
+### 待手动测试项
+
+- [ ] Tab 切换功能正常
+- [ ] 自然语言生成 SQL 后自动切换 Tab
+- [ ] SQL 编辑和执行功能正常
+- [ ] Ctrl+Enter 快捷键正常工作
+- [ ] 未选择连接时组件禁用状态正确
