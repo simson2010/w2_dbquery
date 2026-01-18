@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /* Custom base styles */
 body {
@@ -11,91 +9,4 @@ body {
 
 #root {
   min-height: 100vh;
-}
-
-/* Custom component styles */
-@layer components {
-  /* 按钮样式 */
-  .btn {
-    @apply px-4 py-2 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
-  }
-
-  .btn-primary {
-    @apply btn bg-blue-500 text-white hover:bg-blue-600;
-  }
-
-  .btn-secondary {
-    @apply btn bg-gray-200 text-gray-700 hover:bg-gray-300;
-  }
-
-  .btn-danger {
-    @apply btn bg-red-500 text-white hover:bg-red-600;
-  }
-
-  .btn-success {
-    @apply btn bg-green-500 text-white hover:bg-green-600;
-  }
-
-  /* 输入框样式 */
-  .input {
-    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed;
-  }
-
-  .input-error {
-    @apply input border-red-500 focus:ring-red-500;
-  }
-
-  /* 卡片样式 */
-  .card {
-    @apply bg-white rounded-lg shadow p-4;
-  }
-
-  .card-header {
-    @apply text-lg font-semibold text-gray-700 mb-4;
-  }
-
-  /* 表格样式 */
-  .table {
-    @apply w-full text-sm;
-  }
-
-  .table th {
-    @apply px-4 py-3 text-left font-medium text-gray-700 bg-gray-50 border-b border-gray-200;
-  }
-
-  .table td {
-    @apply px-4 py-2 border-b border-gray-100;
-  }
-
-  .table tr:nth-child(even) {
-    @apply bg-gray-50;
-  }
-
-  /* 标签样式 */
-  .label {
-    @apply block text-sm font-medium text-gray-700 mb-1;
-  }
-
-  /* 空状态样式 */
-  .empty-state {
-    @apply text-center py-8 text-gray-500;
-  }
-
-  /* 代码/等宽字体样式 */
-  .mono {
-    @apply font-mono text-sm;
-  }
-}
-
-/* 响应式工具类 */
-@layer utilities {
-  /* 隐藏滚动条但保持滚动功能 */
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
 }

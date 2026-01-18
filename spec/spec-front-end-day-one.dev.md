@@ -458,15 +458,50 @@ export interface ToastMessage {
 
 ---
 
-## Step 10: 测试与验证
+## Step 10: 测试与验证 ✅ 已完成
 
-### 10.1 启动开发服务器
+### 10.1 TypeScript 类型检查与构建 ✅
+```bash
+cd frontend
+npm run build
+```
+
+**构建结果：**
+```
+✓ 104 modules transformed.
+dist/index.html                   0.47 kB │ gzip:  0.30 kB
+dist/assets/index-DntcugJO.css   17.44 kB │ gzip:  4.26 kB
+dist/assets/index-DvZzgOlj.js   284.32 kB │ gzip: 93.08 kB
+✓ built in 1.09s
+```
+
+### 10.2 Tailwind CSS v4 配置修正 ✅
+由于 Tailwind CSS v4 配置方式变更，进行了以下修正：
+
+1. 安装 `@tailwindcss/postcss` 包
+2. 更新 `postcss.config.js`：
+```javascript
+export default {
+  plugins: {
+    '@tailwindcss/postcss': {},
+    autoprefixer: {},
+  },
+}
+```
+3. 更新 `src/index.css`：
+```css
+@import "tailwindcss";
+```
+
+> **注意：** Tailwind CSS v4 不再使用 `@tailwind base/components/utilities` 指令，改用 `@import "tailwindcss"`。自定义 `@layer components` 样式类需要使用其他方式实现。
+
+### 10.3 启动开发服务器
 ```bash
 cd frontend
 npm run dev
 ```
 
-### 10.2 功能测试
+### 10.4 功能测试清单
 - [ ] 连接管理页面
   - [ ] 添加新连接
   - [ ] 查看连接列表
@@ -484,8 +519,6 @@ npm run dev
   - [ ] 网络错误提示
   - [ ] 无效 SQL 错误提示
   - [ ] 空状态显示
-- [ ] TypeScript 类型检查
-  - [ ] 运行 `npm run build` 确保无类型错误
 
 ---
 
