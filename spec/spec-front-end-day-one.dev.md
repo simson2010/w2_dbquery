@@ -285,73 +285,75 @@ export interface ToastMessage {
 
 ---
 
-## Step 6: 业务组件实现
+## Step 6: 业务组件实现 ✅ 已完成
 
-### 6.1 src/components/ConnectionList.tsx
+### 6.1 src/components/ConnectionList.tsx ✅
 **功能：** 显示已保存的数据库连接列表
 
-- [ ] Props: `connections: Connection[]`, `onDelete: (id: number) => void`, `onTest: (id: number) => void`, `onSelect?: (id: number) => void`
-- [ ] 列表展示连接名称和连接字符串（部分隐藏）
-- [ ] 每行操作按钮：测试、删除
-- [ ] 空状态提示
-- [ ] 测试结果状态显示（成功/失败）
+- [x] Props: `connections: Connection[]`, `onDelete: (id: number) => void`, `onTest: (id: number) => void`, `onSelect?: (id: number) => void`, `loading?: boolean`
+- [x] 列表展示连接名称和连接字符串（密码部分隐藏为 `****`）
+- [x] 每行操作按钮：测试、删除
+- [x] 空状态提示
+- [x] 测试结果状态显示（成功/失败，带颜色区分）
+- [x] 加载状态支持
 
-### 6.2 src/components/ConnectionForm.tsx
+### 6.2 src/components/ConnectionForm.tsx ✅
 **功能：** 添加新数据库连接的表单
 
-- [ ] Props: `onSubmit: (data: ConnectionCreate) => void`, `loading: boolean`
-- [ ] 表单字段：
-  - 连接名称 (name)
-  - 连接字符串 (connection_string)
-- [ ] 表单验证（必填）
-- [ ] 提交按钮（带 loading 状态）
-- [ ] 连接字符串格式提示：`postgresql://user:password@host:port/database`
+- [x] Props: `onSubmit: (data: ConnectionCreate) => void`, `loading: boolean`
+- [x] 表单字段：连接名称、连接字符串
+- [x] 表单验证（必填、格式校验）
+- [x] 提交按钮（带 loading 状态）
+- [x] 连接字符串格式提示
 
-### 6.3 src/components/ConnectionSelector.tsx
+### 6.3 src/components/ConnectionSelector.tsx ✅
 **功能：** 数据库连接选择下拉框
 
-- [ ] Props: `connections: Connection[]`, `selectedId: number | null`, `onChange: (id: number) => void`, `disabled?: boolean`
-- [ ] 下拉选择框
-- [ ] 显示连接名称
-- [ ] 空状态提示（无可用连接）
+- [x] Props: `connections: Connection[]`, `selectedId: number | null`, `onChange: (id: number) => void`, `disabled?: boolean`
+- [x] 下拉选择框
+- [x] 显示连接名称
+- [x] 空状态提示（带跳转链接）
 
-### 6.4 src/components/QueryInput.tsx
+### 6.4 src/components/QueryInput.tsx ✅
 **功能：** 自然语言查询输入
 
-- [ ] Props: `value: string`, `onChange: (value: string) => void`, `onSubmit: () => void`, `loading: boolean`, `disabled: boolean`
-- [ ] 多行文本输入框
-- [ ] 占位符提示（如："请描述您想查询的数据..."）
-- [ ] 生成 SQL 按钮
-- [ ] 快捷键支持（Ctrl+Enter 提交）
+- [x] Props: `value: string`, `onChange: (value: string) => void`, `onSubmit: () => void`, `loading: boolean`, `disabled: boolean`
+- [x] 多行文本输入框
+- [x] 占位符提示
+- [x] 生成 SQL 按钮
+- [x] 快捷键支持（Ctrl+Enter / Cmd+Enter 提交）
 
-### 6.5 src/components/SqlPreview.tsx
+### 6.5 src/components/SqlPreview.tsx ✅
 **功能：** SQL 预览和编辑
 
-- [ ] Props: `sql: string`, `explanation: string`, `onChange: (sql: string) => void`, `onExecute: () => void`, `loading: boolean`, `disabled: boolean`
-- [ ] SQL 文本编辑区域（可编辑）
-- [ ] LLM 解释说明展示
-- [ ] 执行按钮
-- [ ] 空状态（未生成 SQL 时）
+- [x] Props: `sql: string`, `explanation: string`, `onChange: (sql: string) => void`, `onExecute: () => void`, `loading: boolean`, `disabled: boolean`
+- [x] SQL 文本编辑区域（可编辑，等宽字体）
+- [x] LLM 解释说明展示（蓝色背景卡片）
+- [x] 执行按钮（绿色）
+- [x] 空状态（未生成 SQL 时）
 
-### 6.6 src/components/ResultTable.tsx
+### 6.6 src/components/ResultTable.tsx ✅
 **功能：** 查询结果二维表格展示
 
-- [ ] Props: `columns: string[]`, `rows: any[][]`, `rowCount: number`, `loading: boolean`
-- [ ] 表头（列名）
-- [ ] 数据行
-- [ ] 行数统计显示
-- [ ] 空状态（无数据时）
-- [ ] 加载状态
-- [ ] 横向滚动支持（列多时）
+- [x] Props: `columns: string[]`, `rows: unknown[][]`, `rowCount: number`, `loading: boolean`
+- [x] 表头（列名）
+- [x] 数据行（斑马纹）
+- [x] 行数统计显示
+- [x] 空状态（无数据时）
+- [x] 加载状态
+- [x] 横向滚动支持
+- [x] NULL 值特殊显示
 
-### 6.7 src/components/SchemaViewer.tsx
+### 6.7 src/components/SchemaViewer.tsx ✅
 **功能：** 数据库 Schema 查看器
 
-- [ ] Props: `schema: TableSchema[]`, `loading: boolean`
-- [ ] 表列表（可折叠）
-- [ ] 每个表显示列信息：列名、数据类型、是否可空
-- [ ] 加载状态
-- [ ] 空状态
+- [x] Props: `schema: TableSchema[]`, `loading: boolean`
+- [x] 表列表（可折叠/展开）
+- [x] 每个表显示列信息：列名、数据类型、是否可空
+- [x] 展开全部/收起全部按钮
+- [x] 加载状态
+- [x] 空状态
+- [x] 最大高度限制，支持滚动
 
 ---
 
