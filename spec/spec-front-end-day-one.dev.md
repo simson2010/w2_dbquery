@@ -257,29 +257,31 @@ export interface ToastMessage {
 
 ---
 
-## Step 5: 通用组件
+## Step 5: 通用组件 ✅ 已完成
 
-### 5.1 src/components/common/Loading.tsx
+### 5.1 src/components/common/Loading.tsx ✅
 **功能：** 统一的加载状态显示
 
-- [ ] Props: `size?: 'sm' | 'md' | 'lg'`, `text?: string`
-- [ ] Spinner 动画
-- [ ] 可选的加载文字
+- [x] Props: `size?: 'sm' | 'md' | 'lg'`, `text?: string`
+- [x] Spinner 动画（CSS border + animate-spin）
+- [x] 可选的加载文字
 
-### 5.2 src/components/common/Toast.tsx
+### 5.2 src/components/common/Toast.tsx ✅
 **功能：** 统一的消息提示组件
 
-- [ ] Props: `messages: ToastMessage[]`, `onClose: (id: string) => void`
-- [ ] 支持 success/error/info/warning 类型
-- [ ] 自动消失（可配置时间）
-- [ ] 手动关闭按钮
+- [x] Props: `messages: ToastMessage[]`, `onClose: (id: string) => void`, `autoCloseDuration?: number`
+- [x] 支持 success/error/info/warning 类型（不同颜色和图标）
+- [x] 自动消失（默认 3 秒）
+- [x] 手动关闭按钮
+- [x] 固定定位在右上角
 
-### 5.3 src/components/common/ErrorBoundary.tsx
+### 5.3 src/components/common/ErrorBoundary.tsx ✅
 **功能：** React 错误边界，捕获组件渲染错误
 
-- [ ] 捕获子组件错误
-- [ ] 显示友好的错误提示
-- [ ] 提供重试按钮
+- [x] 捕获子组件错误
+- [x] 显示友好的错误提示
+- [x] 提供重试按钮
+- [x] 支持自定义 fallback
 
 ---
 
