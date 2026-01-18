@@ -236,18 +236,24 @@ export interface ToastMessage {
 
 ---
 
-## Step 4: API 服务层
+## Step 4: API 服务层 ✅ 已完成
 
-### 4.1 src/services/api.ts
-- [ ] 创建 axios 实例，配置 baseURL
-- [ ] 添加请求/响应拦截器（错误处理）
-- [ ] `getConnections(): Promise<Connection[]>` - GET /api/connections
-- [ ] `createConnection(data: ConnectionCreate): Promise<Connection>` - POST /api/connections
-- [ ] `deleteConnection(id: number): Promise<void>` - DELETE /api/connections/{id}
-- [ ] `testConnection(id: number): Promise<ConnectionTestResponse>` - POST /api/connections/{id}/test
-- [ ] `getSchema(id: number): Promise<SchemaResponse>` - GET /api/connections/{id}/schema
-- [ ] `generateSql(data: GenerateSqlRequest): Promise<GenerateSqlResponse>` - POST /api/generate-sql
-- [ ] `executeSql(data: ExecuteSqlRequest): Promise<ExecuteSqlResponse>` - POST /api/execute-sql
+### 4.1 src/services/api.ts ✅
+- [x] 创建 axios 实例，配置 baseURL (`/api`)
+- [x] 添加请求拦截器
+- [x] 添加响应拦截器（统一错误处理）
+- [x] `getConnections(): Promise<Connection[]>` - GET /api/connections
+- [x] `createConnection(data: ConnectionCreate): Promise<Connection>` - POST /api/connections
+- [x] `deleteConnection(id: number): Promise<void>` - DELETE /api/connections/{id}
+- [x] `testConnection(id: number): Promise<ConnectionTestResponse>` - POST /api/connections/{id}/test
+- [x] `getSchema(id: number): Promise<SchemaResponse>` - GET /api/connections/{id}/schema
+- [x] `generateSql(data: GenerateSqlRequest): Promise<GenerateSqlResponse>` - POST /api/generate-sql
+- [x] `executeSql(data: ExecuteSqlRequest): Promise<ExecuteSqlResponse>` - POST /api/execute-sql
+
+**实现细节：**
+- 使用 `/api` 作为 baseURL，配合 Vite 代理转发到后端
+- 请求超时设置为 30 秒
+- 响应拦截器统一处理错误，提取 `detail` 字段作为错误信息
 
 ---
 
